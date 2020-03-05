@@ -20,4 +20,6 @@ function cloud(ctx, next) {
 
 app.use(router.routes());
 
-app.listen(process.env.PORT || 80);
+const server = app.listen(process.env.PORT || 80);
+
+module.exports = server;
