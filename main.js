@@ -13,7 +13,20 @@ router
 function cloud(ctx, next) {
 	return new Promise((resolve, reject) => {
 		ctx.type = "application/json";
-		ctx.body = fs.createReadStream(path.join(__dirname, "cloud.json"));
+		const nodes = new Array(1000);
+		for (let i = 0; i < nodes.length; i+=1) {
+			nodes[i] = [Math.random()*10-5, Math.random()*10-5, Math.random()*10-5];
+		}
+		const edges = new Array(10000);
+		for (let i = 0; i < edges.length; i+=1) {
+			const firstNode = Math.floor(Math.random()*nodes.length);
+			const secondNode = (firstNode+Math.ceil(Math.random()*(nodes.length-1)))%nodes.length;
+			edges[i] = {
+				nodes: [firstNode, secondNode],
+				value: Math.random()*20-10,
+			};
+		}
+		ctx.body = JSON.stringify({nodes, edges});
 		resolve();
 	});
 }
