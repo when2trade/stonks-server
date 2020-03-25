@@ -19,7 +19,8 @@
   "homepage": "https://github.com/when2trade/stonks-server#readme",
   "dependencies": {
     "koa": "^2.11.0",
-    "koa-router": "^8.0.8"
+    "koa-router": "^8.0.8",
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "jest": "^25.1.0",
